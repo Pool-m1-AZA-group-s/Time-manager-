@@ -8,7 +8,20 @@ defmodule ApiWeb.Router do
   scope "/api", ApiWeb do
     pipe_through :api
 
+    # Users Routes
+    # get "/users", UserController, :index
+    #resources "/users", UserController, except: [:new, :edit]
     get "/users", UserController, :index
+    get "/users/:id", UserController, :show
+    post "/users", UserController, :create
+    put "/users/:id", UserController, :update
+    delete "/users/:id", UserController, :delete
+    # WorkingTime Routes
+    get "/workingtimes/:userID", WorkingTimeController, :index
+    get "/workingtimes/:userID/:id", WorkingTimeController, :show
+    post "/workingtimes/:userID", WorkingTimeController, :create
+    put "/workingtimes/:id", WorkingTimeController, :update
+    delete "/workingtimes/:id", WorkingTimeController, :delete
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
